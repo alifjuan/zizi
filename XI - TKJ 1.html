@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil XI TKJ 1</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0a0b10;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1c1e2e 0%, #0a0b10 100%);
+            z-index: -1;
+            animation: bgPulse 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgPulse {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        .accent-text {
+            background: linear-gradient(90deg, #ff4d4d, #f9cb28);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            background-clip: text;
+        }
+
+        .cyber-card {
+            background: #151921;
+            border: none;
+            border-left: 4px solid #ff4d4d;
+            border-radius: 10px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .cyber-card:hover {
+            transform: translateX(10px) scale(1.02);
+            background: #1c222d;
+            box-shadow: -10px 0px 30px rgba(255, 77, 77, 0.3);
+        }
+
+        .cyber-card.skills-card {
+            border-left-color: #f9cb28;
+        }
+
+        .cyber-card.skills-card:hover {
+            box-shadow: -10px 0px 30px rgba(249, 203, 40, 0.3);
+        }
+
+        .stat-circle {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #f9cb28;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #f9cb28;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-circle::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, rgba(249,203,40,0.1), transparent);
+            animation: rotate 2s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .stat-circle:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        .stat-circle:hover {
+            background: #f9cb28;
+            color: #0a0b10;
+            box-shadow: 0 0 25px rgba(249, 203, 40, 0.6);
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: #888;
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            color: #ff4d4d;
+            text-shadow: 0 0 10px rgba(255,77,77,0.5);
+        }
+
+        .skill-badge {
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            font-size: 0.9rem;
+            font-weight: 600;
+            min-height: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            border-radius: 12px !important;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .skill-badge:hover::before {
+            left: 100%;
+        }
+
+        .skill-badge:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        }
+
+        .skill-badge i {
+            font-size: 1.4rem;
+            transition: transform 0.3s;
+        }
+
+        .skill-badge:hover i {
+            transform: scale(1.2);
+        }
+
+        .modal-content {
+            background: linear-gradient(145deg, #151921 0%, #1c222d 100%);
+            border: 1px solid #444;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid #333;
+            border-radius: 20px 20px 0 0 !important;
+            padding: 20px 25px;
+        }
+
+        .modal-title {
+            font-weight: 800;
+            text-shadow: 0 0 10px currentColor;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #2a2a2a;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s;
+        }
+
+        .feature-list li:hover {
+            padding-left: 10px;
+            color: #f9cb28;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h1 class="display-3 accent-text mb-3">XI TKJ 1</h1>
+            <p class="lead text-secondary mb-4">The First Generation of Network Engineers</p>
+            <a href="tentang.html" class="back-link small"><i class="fas fa-arrow-left me-1"></i>Kembali ke Beranda</a>
+        </div>
+
+        <div class="row text-center mb-5">
+            <div class="col-md-4 mb-4">
+                <div class="stat-circle">39</div>
+                <h5 class="text-light">Siswa</h5>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="stat-circle">A</div>
+                <h5 class="text-light">Akreditasi</h5>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="stat-circle">TKJ</div>
+                <h5 class="text-light">Jurusan</h5>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <div class="cyber-card mb-4">
+                    <h3 class="accent-text mb-3"><i class="fas fa-info-circle me-2"></i>Deskripsi Kelas</h3>
+                    <p class="lead">XI TKJ 1 adalah kelas yang berdedikasi tinggi dalam mempelajari infrastruktur jaringan. Kami bukan sekadar teman sekelas, melainkan tim yang solid dalam memecahkan masalah koding, konfigurasi router, hingga troubleshooting perangkat keras.</p>
+                </div>
+
+                <div class="cyber-card skills-card">
+                    <h3 class="accent-text mb-4"><i class="fas fa-tools me-2"></i>Keahlian Kami</h3>
+                    <div class="row mt-4 text-center">
+                        <div class="col-4 mb-3">
+                            <span class="badge bg-dark border border-warning p-3 w-100 skill-badge text-warning"
+                                  data-bs-toggle="modal" data-bs-target="#modalMikrotik">
+                                <i class="fas fa-router"></i>
+                                <div>Mikrotik</div>
+                            </span>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <span class="badge bg-dark border border-info p-3 w-100 skill-badge text-info"
+                                  data-bs-toggle="modal" data-bs-target="#modalCisco">
+                                <i class="fab fa-cisco"></i>
+                                <div>Cisco</div>
+                            </span>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <span class="badge bg-dark border border-success p-3 w-100 skill-badge text-success"
+                                  data-bs-toggle="modal" data-bs-target="#modalLinux">
+                                <i class="fab fa-linux"></i>
+                                <div>Linux</div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="text-center mt-5 pt-4 opacity-75">
+            <hr class="border-secondary">
+            <p class="mb-0">&copy; 2026 <span class="accent-text">Crafted for XI TKJ 1</span></p>
+        </footer>
+    </div>
+
+    <!-- Modal Mikrotik -->
+    <div class="modal fade" id="modalMikrotik" tabindex="-1" data-bs-backdrop="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-0 bg-warning bg-opacity-10">
+                    <h5 class="modal-title accent-text">
+                        <i class="fas fa-router me-2"></i>Mikrotik Mastery
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body py-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-4 text-center mb-3 mb-md-0">
+                            <i class="fas fa-router fa-4x text-warning mb-3"></i>
+                            <span class="badge bg-warning text-dark px-3 py-2">RouterOS</span>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="lead mb-3">Configuration Experts</p>
+                            <ul class="feature-list">
+                                <li><span class="feature-icon bg-warning text-dark"><i class="fas fa-firewall"></i></span> Firewall & NAT</li>
+                                <li><span class="feature-icon bg-warning text-dark"><i class="fas fa-wifi"></i></span> Hotspot & Wireless</li>
+                                <li><span class="feature-icon bg-warning text-dark"><i class="fas fa-tachometer-alt"></i></span> Bandwidth Management</li>
+                                <li><span class="feature-icon bg-warning text-dark"><i class="fas fa-shield-alt"></i></span> VPN & IPsec</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Cisco -->
+    <div class="modal fade" id="modalCisco" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-0" style="background: rgba(13,202,240,0.15);">
+                    <h5 class="modal-title text-info">
+                        <i class="fab fa-cisco me-2"></i>Cisco Certified
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body py-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-4 text-center mb-3 mb-md-0">
+                            <i class="fab fa-cisco fa-4x text-info mb-3"></i>
+                            <span class="badge bg-info text-white px-3 py-2">CCNA Level</span>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="lead mb-3">Networking Professionals</p>
+                            <ul class="feature-list">
+                                <li><span class="feature-icon bg-info text-white"><i class="fas fa-route"></i></span> OSPF & EIGRP Routing</li>
+                                <li><span class="feature-icon bg-info text-white"><i class="fas fa-sitemap"></i></span> VLAN & Trunking</li>
+                                <li><span class="feature-icon bg-info text-white"><i class="fas fa-ethernet"></i></span> Layer 2/3 Switching</li>
+                                <li><span class="feature-icon bg-info text-white"><i class="fas fa-lock"></i></span> ACL Security</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Linux -->
+    <div class="modal fade" id="modalLinux" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-0" style="background: rgba(25,135,84,0.15);">
+                    <h5 class="modal-title text-success">
+                        <i class="fab fa-linux me-2"></i>Linux Server Admins
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body py-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-4 text-center mb-3 mb-md-0">
+                            <i class="fab fa-linux fa-4x text-success mb-3"></i>
+                            <span class="badge bg-success text-white px-3 py-2">Ubuntu/CentOS</span>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="lead mb-3">System Administrators</p>
+                            <ul class="feature-list">
+                                <li><span class="feature-icon bg-success text-white"><i class="fas fa-server"></i></span> Apache/Nginx Web Server</li>
+                                <li><span class="feature-icon bg-success text-white"><i class="fas fa-database"></i></span> MySQL & PostgreSQL</li>
+                                <li><span class="feature-icon bg-success text-white"><i class="fas fa-terminal"></i></span> Bash Scripting</li>
+                                <li><span class="feature-icon bg-success text-white"><i class="fas fa-cloud"></i></span> Docker Containers</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

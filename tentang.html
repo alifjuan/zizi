@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - XI TKJ 1</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* BACKGROUND & DASAR */
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background-attachment: fixed;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* ANIMASI */
+        .animasi-bawah { animation: fadeInUp 1.2s ease-out forwards; }
+        .animasi-kiri { animation: slideInLeft 1.2s ease-out forwards; }
+        .animasi-kanan { animation: slideInRight 1.2s ease-out forwards; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* FRAME FOTO ELEGAN */
+        .img-frame {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.4s ease;
+        }
+
+        .img-frame:hover {
+            transform: scale(1.02);
+        }
+
+        .img-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* KARTU KONTEN (GLASSMORPHISM) */
+        .custom-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            height: 100%;
+            transition: 0.3s;
+        }
+
+        .custom-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #e94560;
+        }
+
+        hr {
+            border-top: 3px solid #e94560;
+            width: 60px;
+            margin: 20px auto;
+            opacity: 1;
+        }
+
+        .accent-color {
+            color: #e94560;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent pt-4">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="XI - TKJ 1.html">XI-TKJ 1</a>
+            <div class="ms-auto">
+                <a href="beranda.html" class="btn btn-outline-light btn-sm">Kembali ke Beranda</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4 mb-5">
+        <div class="row">
+            <div class="col-md-12 text-center animasi-bawah">
+                <h1 class="display-4 fw-bold">TENTANG <span class="accent-color">KAMI</span></h1>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-4 animasi-bawah">
+            <div class="col-md-10">
+                <div class="img-frame">
+                    <img src="1354199.jpg" alt="Foto Kelas XI TKJ 1">
+                </div>
+                <p class="text-center mt-3 text-secondary italic">"Keluarga Besar Teknik Komputer dan Jaringan 1"</p>
+            </div>
+        </div>
+        
+        <div class="row mt-5">
+            <div class="col-md-4 mb-4 animasi-kiri">
+                <div class="custom-card">
+                    <h4 class="accent-color fw-bold">Siapa Kami?</h4>
+                    <p>Kami adalah siswa-siswi XI-TKJ 1 yang berfokus pada penguasaan teknologi jaringan, hardware, dan sistem operasi komputer.</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4 animasi-bawah">
+                <div class="custom-card">
+                    <h4 class="accent-color fw-bold">Visi</h4>
+                    <p>Menjadi generasi unggul di bidang teknologi informasi yang kreatif, inovatif, dan berakhlak mulia.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4 animasi-kanan">
+                <div class="custom-card">
+                    <h4 class="accent-color fw-bold">Misi</h4>
+                    <ul class="ps-3">
+                        <li>Menguasai administrasi jaringan.</li>
+                        <li>Membangun solidaritas antar siswa.</li>
+                        <li>Berinovasi dalam karya digital.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col text-center opacity-50">
+                <small>&copy; 2026 XI-TKJ 1 | Dibuat dengan bangga</small>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
